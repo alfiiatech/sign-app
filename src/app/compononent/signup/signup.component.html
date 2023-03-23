@@ -1,0 +1,104 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <h1>Sign up</h1>
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your Name" formControlName="name" name="name" required>
+        <div
+            *ngIf="signupForm.controls['name'].invalid && (signupForm.controls['name'].dirty || signupForm.controls['name'].touched)">
+            <div *ngIf="signupForm.controls['name'].errors.required" style="color: red;">This Field Cannot be empty
+            </div>
+        </div>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your Email" formControlName="email" name="email" required>
+        <div
+            *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+            <div *ngIf="signupForm.controls['email'].errors.required" style="color: red;">This Field Cannot be empty
+            </div>
+            <div *ngIf="signupForm.controls['email'].errors.email" style="color: red;">Invalid email format.</div>
+        </div>
+    </div>
+    <div>
+        <label for="adress">Address:</label>
+        <input type="text" placeholder="Enter your Address" id="address" formControlName="address" name="address"
+            formControlName="address" required><br>
+        <div
+            *ngIf="signupForm.controls['address'].invalid && (signupForm.controls['address'].dirty || signupForm.controls['address'].touched)">
+            <div *ngIf="signupForm.controls['address'].errors.required" style="color: red;">This Field Cannot be empty
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <label for="phone">Phone Number:</label>
+        <input type="text" placeholder="Enter your Phone number" formControlName="phone" [maxlength]="10" name="phone"
+            required>
+        <div
+            *ngIf="signupForm.controls['phone'].invalid && (signupForm.controls['phone'].dirty || signupForm.controls['phone'].touched)">
+            <div *ngIf="signupForm.controls['phone'].errors.required" style="color: red;">This Field Cannot be empty
+            </div>
+            <div *ngIf="signupForm.controls['phone'].errors.pattern" style="color: red;">Invalid format.</div>
+        </div>
+    </div>
+    <div>
+        <label for="dob">Date of Birth:</label><br>
+        <input type="text" placeholder="DD" [maxlength]="2" class="dd" name="day" formControlName="day"
+            formControlName="email" required>&nbsp;
+        <select name="month" id="month" formControlName="month" name="month" required>
+            <option value="" disabled selected>Month</option>
+            <option value="Januray">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>&nbsp;
+        <input type="text" [maxlength]="4" placeholder="YYYY" class="yyyy" name="year" formControlName="year" required>
+    </div>
+    <div class="gender">
+        <label for="gender">Gender: &nbsp;</label><br>
+        <input type="radio" name="gender" id="male" value="male" required>
+        <label for="male">Male</label>
+
+        <input type="radio" name="gender" id="female" value="female">
+        <label for="female">Female</label>
+
+        <input type="radio" name="gender" id="other" value="other">
+        <label for="other">Other</label>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password" formControlName="password" required><br>
+        <div
+            *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)">
+            <div *ngIf="signupForm.controls['password'].errors.required" style="color: red;">This Field Cannot be empty
+            </div>
+            <div *ngIf="signupForm.controls['password'].errors.pattern" style="color: red;">Invalid format.</div>
+        </div>
+    </div>
+    <!-- <div>
+        <label for="confirmpassword" formControlName="confirmpassword" name="confirmpassword" required>
+            Confirm Password:</label>
+        <input type="password" name="confirmpassword" formControlName="confirmpassword" required><br>
+        <div
+            *ngIf="signupForm.controls['confirmpassword'].invalid && (signupForm.controls['confirmpassword'].dirty || signupForm.controls['confirmpassword'].touched)">
+            <div *ngIf="signupForm.controls['confirmpassword'].errors.required" style="color: red;">This Field Cannot be
+                empty
+            </div>
+        </div>
+    </div> -->
+    <div class="check">
+        <input type="checkbox" required>I am eligible for signup
+    </div>
+    <div class="btn">
+        <button type="submit" onclick="onsubmit()">Submit</button>
+    </div>
+    <p>Already have Account? <a href="http://localhost:4200/login">Login</a></p>
+</form>
